@@ -73,6 +73,7 @@ export default function ContactForm() {
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                autoFocus
                 className={errors.name ? 'border-red-500' : ''}
               />
               {errors.name && (
