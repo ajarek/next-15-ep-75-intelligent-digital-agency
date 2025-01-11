@@ -22,7 +22,7 @@ const MobileNav = () => {
       <SheetClose asChild>
         <SheetContent
           side='left'
-          className='border-none bg-background text-foreground  shadow-none lg:hidden '
+          className='border-none bg-primary   shadow-none lg:hidden '
           aria-describedby='mobile-nav'
         >
           <SheetTitle className='text-xl font-semibold uppercase italic '>
@@ -49,19 +49,19 @@ const MobileNav = () => {
             About us
           </Link>
           <Link
-            aria-label='profile'
+            aria-label='Services'
             className=''
-            href='/profile'
+            href='/services'
           >
-            Profile
+            Services
           </Link>
 
           <Link
-            aria-label='Team'
-            href='/team'
+            aria-label='Reviews'
+            href='/reviews'
             className=''
           >
-            Team
+            Reviews
           
             </Link>
           </div>

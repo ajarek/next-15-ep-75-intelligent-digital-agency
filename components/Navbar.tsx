@@ -39,19 +39,19 @@ const Navbar = () => {
             About us
           </Link>
           <Link
-            aria-label='profile'
+            aria-label='Services'
             className=''
-            href='/profile'
+            href='/services'
           >
-            Profile
+            Services
           </Link>
 
           <Link
-            aria-label='Team'
-            href='/team'
+            aria-label='Reviews'
+            href='/reviews'
             className=''
           >
-            Team
+            Reviews
           </Link>
         </ul>
         <div className=' lg:hidden'>
