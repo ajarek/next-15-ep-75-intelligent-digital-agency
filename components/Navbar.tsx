@@ -1,8 +1,10 @@
 import Link from "next/link"
-import React from "react"
+import React from "react" 
 import MobileNav from "./MobileNav"
-import { auth } from '@/app/api/auth'
+import { auth } from '@/app/api/auth/auth'
 import Image from "next/image"
+import Logout from './Logout'
+
 const Navbar =async () => {
   const session = await auth()
   console.log(session)
@@ -43,6 +45,7 @@ const Navbar =async () => {
           >
             Reviews
           </Link>
+          <Logout session={session} />
         </ul>
         <div className=' lg:hidden'>
           <MobileNav />
