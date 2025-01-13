@@ -1,3 +1,4 @@
+import MotionDiv from "@/components/MotionDiv"
 import Image from "next/image"
 
 export default function CustomerReviews() {
@@ -36,7 +37,7 @@ export default function CustomerReviews() {
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
         {reviews.map((review) => (
-          <div
+          <MotionDiv
             key={review.id}
             className='bg-primary p-8 rounded-lg shadow-md text-center'
           >
@@ -57,7 +58,7 @@ export default function CustomerReviews() {
             <p className='text-gray-600 text-sm mb-4'>{review.role}</p>
 
             <p className='text-gray-600 italic'>"{review.review}"</p>
-          </div>
+          </MotionDiv>
         ))}
       </div>
     </div>

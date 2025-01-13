@@ -1,7 +1,5 @@
-'use client'
-
-import { Menu, ShoppingCart } from 'lucide-react'
-import Link from 'next/link'
+import { Menu } from "lucide-react"
+import Link from "next/link"
 
 import {
   Sheet,
@@ -10,14 +8,13 @@ import {
   SheetTrigger,
   SheetTitle,
   SheetDescription,
-} from '@/components/ui/sheet'
+} from "@/components/ui/sheet"
 
 const MobileNav = () => {
-  
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Menu size={36} />
+        <Menu size={36}  />
       </SheetTrigger>
       <SheetClose asChild>
         <SheetContent
@@ -26,43 +23,39 @@ const MobileNav = () => {
           aria-describedby='mobile-nav'
         >
           <SheetTitle className='text-xl font-semibold uppercase italic '>
-            <Link
-              href='/'
-              aria-label='Stron Główna'
-            >
-             Digital Agency
+            <Link href='/' aria-label='Stron Główna'>
+              Digital Agency
             </Link>
           </SheetTitle>
-          <div className='flex flex-col gap-4 text-xl mt-4 '>
-          <Link
-            aria-label='contact'
-            className=''
-            href='/contact'
-          >
-            Contact
-          </Link>
-          <Link
-            aria-label='about us'
-            className=''
-            href='/about'
-          >
-            About us
-          </Link>
-          <Link
-            aria-label='Services'
-            className=''
-            href='/services'
-          >
-            Services
-          </Link>
+          <div className=' flex flex-col gap-4 text-xl mt-4 '>
+            <Link
+              aria-label='contact'
+              className='w-fit border-b-2 border-b-primary hover:border-b-2 hover:border-secondary focus:border-b-2 focus:border-secondary'
+              href='/contact'
+            >
+              Contact
+            </Link>
+            <Link
+              aria-label='about us'
+               className='w-fit border-b-2 border-b-primary hover:border-b-2 hover:border-secondary focus:border-b-2 focus:border-secondary'
+              href='/about'
+            >
+              About us
+            </Link>
+            <Link
+              aria-label='Services'
+               className='w-fit border-b-2 border-b-primary hover:border-b-2 hover:border-secondary focus:border-b-2 focus:border-secondary'
+              href='/services'
+            >
+              Services
+            </Link>
 
-          <Link
-            aria-label='Reviews'
-            href='/reviews'
-            className=''
-          >
-            Reviews
-          
+            <Link
+              aria-label='Reviews'
+              href='/reviews'
+               className='w-fit border-b-2 border-b-primary hover:border-b-2 hover:border-secondary focus:border-b-2 focus:border-secondary'
+            >
+              Reviews
             </Link>
           </div>
           <SheetDescription></SheetDescription>

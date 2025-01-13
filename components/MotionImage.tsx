@@ -1,7 +1,7 @@
 import * as motion from "motion/react-client"
 import Image from "next/image"
 
-const MotionImage = () => {
+const MotionImage = ({src, alt, width, height}:{src: string, alt: string, width: number, height: number}) => {
   return (
     <motion.div
       whileHover={{ scale: 1.1 }}
@@ -14,10 +14,10 @@ const MotionImage = () => {
       }}
     >
       <Image
-        src='/images/contact.jpg'
-        alt='contact'
-        width={400}
-        height={400}
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
         className='rounded-sm shadow-lg shadow-foreground'
       />
     </motion.div>

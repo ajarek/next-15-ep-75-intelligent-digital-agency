@@ -1,19 +1,12 @@
-import Image from "next/image"
-import { buttonVariants } from "@/components/ui/button"
-import Link from "next/link"
+import MotionLink from "@/components/MotionLink"
+import MotionImage from "@/components/MotionImage"
 
 export default function AboutUs() {
   return (
-    <div className='w-full container min-h-[calc(100vh-(32px*2+48px))] flex flex-col items-center justify-center bg-secondary gap-4 p-4'>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-8 items-center'>
-        <div className='relative w-full h-96 md:h-[400px] rounded-lg overflow-hidden'>
-          <Image
-            src='/images/team.jpg'
-            alt='Our Team'
-            layout='fill'
-            objectFit='cover'
-            className='rounded-lg'
-          />
+    <div className='w-full container min-h-[calc(100vh-(32px*2+48px))] flex flex-col  justify-center bg-secondary gap-4 p-4'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center'>
+        <div className='relative w-full h-96 md:h-[400px] rounded-lg overflow-hidden flex justify-center items-center'>
+        <MotionImage src='/images/team.jpg' alt='team' width={400} height={400}/>
         </div>
 
         <div className='space-y-6'>
@@ -32,16 +25,9 @@ export default function AboutUs() {
             We believe in collaboration, creativity, and continuous improvement,
             ensuring that our clients stay ahead of the curve.
           </p>
-          <Link
-            href='/contact'
-            className={`${buttonVariants({
-              variant: "default",
-            })}  shadow-xl  text-xl flex items-center gap-2 `}
-            aria-label='Get Started'
-          >
-            {" "}
-            Learn More{" "}
-          </Link>
+          <div className='flex justify-end'>
+            <MotionLink label="Contact Us" href="/contact" />
+          </div>
         </div>
       </div>
     </div>

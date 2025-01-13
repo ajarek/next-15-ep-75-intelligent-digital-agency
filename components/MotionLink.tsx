@@ -16,7 +16,7 @@ const MotionLink =  ({label, href}: {label: string, href: string}) =>{
              <Link href={href} className={`${buttonVariants({
             variant: 'default',
           })}  shadow-xl  text-xl flex items-center gap-2 `}
-          aria-label='Get Started'>{label}  <TrendingUp size={32} /></Link>
+          aria-label={label}>{label}  <TrendingUp size={32} /></Link>
         </motion.div>
     )
 }

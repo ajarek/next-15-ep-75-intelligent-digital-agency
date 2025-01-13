@@ -1,3 +1,5 @@
+import MotionDiv from "@/components/MotionDiv"
+import MotionLink from "@/components/MotionLink"
 import { buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -9,7 +11,7 @@ export default function Services() {
       </h1>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12'>
-        <div className='bg-primary p-6 rounded-lg shadow-md'>
+        <MotionDiv   className='bg-primary p-6 rounded-lg shadow-md'>
           <h2 className='text-xl font-semibold text-gray-800 mb-4'>
             AI & Automation
           </h2>
@@ -18,9 +20,9 @@ export default function Services() {
             <li>Chatbots</li>
             <li>Predictive analytics</li>
           </ul>
-        </div>
+        </MotionDiv >
 
-        <div className='bg-primary p-6 rounded-lg shadow-md'>
+        <MotionDiv   className='bg-primary p-6 rounded-lg shadow-md'>
           <h2 className='text-xl font-semibold text-gray-800 mb-4'>
             Digital Marketing
           </h2>
@@ -29,9 +31,9 @@ export default function Services() {
             <li>Social media campaigns</li>
             <li>Pay-per-click advertising</li>
           </ul>
-        </div>
+        </MotionDiv >
 
-        <div className='bg-primary p-6 rounded-lg shadow-md'>
+        <MotionDiv   className='bg-primary p-6 rounded-lg shadow-md'>
           <h2 className='text-xl font-semibold text-gray-800 mb-4'>
             Web Development
           </h2>
@@ -40,9 +42,9 @@ export default function Services() {
             <li>E-commerce platforms</li>
             <li>UI/UX design</li>
           </ul>
-        </div>
+        </MotionDiv >
 
-        <div className='bg-primary p-6 rounded-lg shadow-md'>
+        <MotionDiv   className='bg-primary p-6 rounded-lg shadow-md'>
           <h2 className='text-xl font-semibold text-gray-800 mb-4'>
             Branding & Design
           </h2>
@@ -51,7 +53,7 @@ export default function Services() {
             <li>Brand strategy</li>
             <li>Visual identity</li>
           </ul>
-        </div>
+        </MotionDiv >
       </div>
 
       <div className='bg-gray-50 p-8 rounded-lg mb-12'>
@@ -85,15 +87,9 @@ export default function Services() {
         <h2 className='text-3xl font-bold text-gray-900 mb-4'>
           Discover How We Can Help You Succeed
         </h2>
-        <Link
-          href='/contact'
-          className={`${buttonVariants({
-            variant: "default",
-          })}  shadow-xl  text-xl flex items-center gap-2 `}
-          aria-label='Get Started'
-        >
-          Get in Touch
-        </Link>
+        <div className='flex justify-end'>
+          <MotionLink label="Get in Touch" href="/contact" />
+        </div>
       </div>
     </div>
   )
