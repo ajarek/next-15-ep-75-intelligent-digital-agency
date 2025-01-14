@@ -15,8 +15,7 @@ interface UserWithId extends NextAuthUser {
 
 const authOptions: any = {
   pages: {
-    error: '/register',
-    signIn: '/login',
+    error: '/login',
   },
   theme: {
     colorScheme: 'auto',

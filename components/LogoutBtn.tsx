@@ -8,8 +8,8 @@ const LogoutBtn = () => {
       className={`${buttonVariants({
         variant: 'default',
       })} h-7 text-[18px] `}
-      href={'/api/auth/signout'}
-      aria-label='Login'
+      href={'/signout'}
+      aria-label='signout'
     >
       LogOut <LogOut />
     </Link>
