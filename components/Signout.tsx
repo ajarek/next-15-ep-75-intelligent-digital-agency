@@ -24,7 +24,7 @@ const Signout = () => {
         </Link>
       </div>
        <p>Are you sure you want to sign out?</p>
-      <Button type='submit' className='w-full'>
+      <Button type='submit' className='w-full bg-red-500 text-white hover:bg-red-600'>
         Sign Out
       </Button>
     </form>

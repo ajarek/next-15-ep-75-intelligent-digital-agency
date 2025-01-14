@@ -18,10 +18,10 @@ const authOptions: any = {
     error: '/login',
   },
   theme: {
-    colorScheme: 'auto',
-    brandColor: '#0E78F9',
+    // colorScheme: 'auto',
+    // brandColor: '#0E78F9',
     logo: '/images/logo.jpg',
-    buttonText: '#ffffff',
+    // buttonText: '#ffffff',
   },
   providers: [
     CredentialsProvider({

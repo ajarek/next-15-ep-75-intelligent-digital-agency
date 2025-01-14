@@ -8,9 +8,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { Mail, User, Check } from "lucide-react"
 import MotionButton from "./MotionButton"
 
-export default function ContactForm() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
+export default function ContactForm({ nameUser, emailUser }: { nameUser: string, emailUser:string }) {
+  const [name, setName] = useState(nameUser)
+  const [email, setEmail] = useState(emailUser)
   const [message, setMessage] = useState("")
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -39,8 +39,8 @@ export default function ContactForm() {
     if (validateForm()) {
       setIsSubmitted(true)
       // Reset form fields after submission
-      setName("")
-      setEmail("")
+      setName(nameUser)
+      setEmail(emailUser)
       setMessage("")
       setErrors({})
     }
@@ -55,7 +55,9 @@ export default function ContactForm() {
         {isSubmitted ? (
           <div className='flex flex-col items-center justify-center space-y-4'>
             <Check className='h-12 w-12 text-green-500' />
-            <p className='text-lg font-semibold'>Thank you for your message!</p>
+            <p className='text-lg text-center font-semibold'>
+              {nameUser.toUpperCase()}, Thank you for your message!
+            </p>
             <Button
               variant='outline'
               onClick={() => setIsSubmitted(false)}
@@ -74,7 +76,7 @@ export default function ContactForm() {
                 id='name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                autoFocus
+                
                 className={errors.name ? "border-red-500" : ""}
               />
               {errors.name && (
@@ -105,6 +107,7 @@ export default function ContactForm() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className={errors.message ? "border-red-500" : ""}
+                autoFocus
               />
               {errors.message && (
                 <p className='text-sm text-red-500 mt-1'>{errors.message}</p>

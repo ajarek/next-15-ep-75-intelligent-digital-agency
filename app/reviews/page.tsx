@@ -1,7 +1,14 @@
 import MotionDiv from "@/components/MotionDiv"
 import Image from "next/image"
+import { auth } from '@/app/api/auth/auth'
+import { redirect } from "next/navigation"
 
-export default function CustomerReviews() {
+const CustomerReviews= async() => {
+  const session = await auth()
+  if(!session){ 
+    redirect('/login')
+  }
+
   const reviews = [
     {
       id: 1,
@@ -64,3 +71,4 @@ export default function CustomerReviews() {
     </div>
   )
 }
+export default CustomerReviews

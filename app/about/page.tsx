@@ -1,7 +1,13 @@
 import MotionLink from "@/components/MotionLink"
 import MotionImage from "@/components/MotionImage"
+import { auth } from '@/app/api/auth/auth'
+import { redirect } from 'next/navigation'
+const AboutUs = async () => {
+  const session = await auth()
+  if(!session){ 
+    redirect('/login')
+  }
 
-export default function AboutUs() {
   return (
     <div className='w-full container min-h-[calc(100vh-(32px*2+48px))] flex flex-col  justify-center bg-secondary gap-4 p-4'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center'>
@@ -33,3 +39,4 @@ export default function AboutUs() {
     </div>
   )
 }
+export default AboutUs

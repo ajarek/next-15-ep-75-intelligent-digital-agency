@@ -11,9 +11,7 @@ const Logout = async ({ session }: { session: Session | null }) => {
         <LogoutBtn />
       ) : (
         <Link
-          className={`${buttonVariants({
-            variant: 'default',
-          })} h-7 text-[18px] `}
+          className={`${buttonVariants({variant: 'default',})} w-fit h-7 text-[18px] bg-green-500 hover:bg-green-600 text-white`}
           href={'/login'}
           aria-label='Login'
         >

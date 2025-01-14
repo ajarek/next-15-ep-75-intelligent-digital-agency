@@ -1,9 +1,13 @@
 import MotionDiv from "@/components/MotionDiv"
 import MotionLink from "@/components/MotionLink"
-import { buttonVariants } from "@/components/ui/button"
-import Link from "next/link"
+import { auth } from '@/app/api/auth/auth'
+import { redirect } from "next/navigation"
 
-export default function Services() {
+export default async function Services() {
+  const session = await auth()
+  if(!session){
+    redirect('/login')
+  }
   return (
     <div className='w-full container min-h-[calc(100vh-(32px*2+48px))] flex flex-col items-center justify-center bg-secondary gap-4 p-4'>
       <h1 className='text-4xl font-bold text-center text-gray-900 mb-8'>

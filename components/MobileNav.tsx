@@ -1,6 +1,7 @@
 import { Menu } from "lucide-react"
 import Link from "next/link"
-
+import Logout from './Logout'
+import { auth } from '@/app/api/auth/auth'
 import {
   Sheet,
   SheetClose,
@@ -10,7 +11,8 @@ import {
   SheetDescription,
 } from "@/components/ui/sheet"
 
-const MobileNav = () => {
+const MobileNav = async () => {
+  const session = await auth()
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -28,6 +30,7 @@ const MobileNav = () => {
             </Link>
           </SheetTitle>
           <div className=' flex flex-col gap-4 text-xl mt-4 '>
+            <Logout session={session} />
             <Link
               aria-label='contact'
               className='w-fit border-b-2 border-b-primary hover:border-b-2 hover:border-secondary focus:border-b-2 focus:border-secondary'

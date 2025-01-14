@@ -7,7 +7,7 @@ import Logout from './Logout'
 
 const Navbar =async () => {
   const session = await auth()
-  console.log(session)
+ 
   return (
     <div className='max-w-7xl mx-auto h-12  px-4  w-full z-10 bg-secondary'>
       <nav className='h-full flex items-center justify-between container mx-auto px-4'>
