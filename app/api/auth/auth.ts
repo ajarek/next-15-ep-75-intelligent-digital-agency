@@ -1,28 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import NextAuth, { Session, User as NextAuthUser } from 'next-auth'
-import JWT from 'next-auth'
+
+import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { User } from '@/lib/models'
 import connectToDb from '@/lib/connectToDb'
 import bcrypt from 'bcryptjs'
 
-interface UserWithId extends NextAuthUser {
-  id: string
-  isAdmin: boolean
-  img: string
-  username: string
-}
-
-const authOptions: any = {
-  pages: {
-    error: '/login',
-  },
-  theme: {
-    // colorScheme: 'auto',
-    // brandColor: '#0E78F9',
-    logo: '/images/logo.jpg',
-    // buttonText: '#ffffff',
-  },
+export const authOptions: any = {
   providers: [
     CredentialsProvider({
       name: 'Credential',
@@ -42,7 +26,7 @@ const authOptions: any = {
         try {
           const user = await User.findOne({ username })
           if (user && (await bcrypt.compare(password, user.password))) {
-            return user as UserWithId
+            return user as User
           }
           return null
         } catch (err) {
@@ -51,41 +35,9 @@ const authOptions: any = {
       },
     }),
   ],
-  callbacks: {
-    async jwt({ token, user }: { token: typeof JWT; user?: NextAuthUser }) {
-      if (user) {
-        const userWithId = user as UserWithId
-        return {
-          ...token,
-          id: userWithId.id,
-          name: userWithId.username,
-          admin: userWithId.isAdmin,
-          image: userWithId.img,
-        }
-      }
-      return token
-    },
-    async session({ session, token }: { session: Session; token: typeof JWT }) {
-      return {
-        ...session,
-        user: {
-          ...session.user,
-
-          name: token.name,
-        },
-      }
-    },
-    async redirect({ baseUrl }: { baseUrl: string }) {
-      return `${baseUrl}`
-    },
-  },
+ 
   secret: process.env.AUTH_SECRET,
-  session: {
-    strategy: 'jwt',
-  },
+  session: {strategy: 'jwt', maxAge: 30 * 24 * 60 * 60}, // 30 days
 }
 
-export const {
-  auth,
-  handlers: { GET, POST },signIn,signOut
-} = NextAuth(authOptions)
+export const { auth, handlers: { GET, POST }, signIn, signOut } = NextAuth(authOptions)
