@@ -1,12 +1,23 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { User } from '@/lib/models'
 import connectToDb from '@/lib/connectToDb'
 import bcrypt from 'bcryptjs'
 
-export const authOptions: any = {
+const validateCredentials = (username: unknown, password: unknown): boolean => {
+  return typeof username === 'string' && 
+         typeof password === 'string' && 
+         username.length > 0 && 
+         password.length > 0
+}
+
+const authenticateUser = async (username: string, password: string) => {
+        await connectToDb()
+          const user = await User.findOne({ username })
+  return user && await bcrypt.compare(password, user.password) ? user : null
+          }
+
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credential',
@@ -15,29 +26,35 @@ export const authOptions: any = {
         password: { type: 'password', required: true },
       },
       async authorize(credentials) {
-        await connectToDb()
-        const username = credentials?.username ?? ''
-        const password = credentials?.password ?? ''
+        const username = credentials?.username
+        const password = credentials?.password
 
-        if (typeof username !== 'string' || typeof password !== 'string') {
+        if (!validateCredentials(username, password)) {
           throw new Error('Invalid credentials')
         }
 
         try {
-          const user = await User.findOne({ username })
-          if (user && (await bcrypt.compare(password, user.password))) {
-            return user as User
-          }
-          return null
+          return await authenticateUser(username as string, password as string)
         } catch (err) {
           throw new Error(err instanceof Error ? err.message : String(err))
         }
       },
     }),
   ],
- 
   secret: process.env.AUTH_SECRET,
-  session: {strategy: 'jwt', maxAge: 30 * 24 * 60 * 60}, // 30 days
-}
+  session: {
+    strategy: 'jwt', 
+    maxAge: 30 * 24 * 60 * 60
+  },
+} as const
 
-export const { auth, handlers: { GET, POST }, signIn, signOut } = NextAuth(authOptions)
+const authOptionsFixed = {
+  ...authOptions,
+  providers: Array.from(authOptions.providers)
+}
+export const { 
+  auth, 
+  handlers: { GET, POST }, 
+  signIn, 
+  signOut 
+} = NextAuth(authOptionsFixed)
