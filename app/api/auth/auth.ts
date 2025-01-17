@@ -41,6 +41,14 @@ export const authOptions = {
       },
     }),
   ],
+
+  callbacks: {
+    async redirect({  baseUrl }:{baseUrl: string}) {
+      return `${baseUrl}`
+    },
+   
+
+},
   secret: process.env.AUTH_SECRET,
   session: {
     strategy: 'jwt', 
