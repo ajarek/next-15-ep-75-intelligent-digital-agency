@@ -64,7 +64,7 @@ const CustomerReviews= async() => {
 
             <p className='text-gray-600 text-sm mb-4'>{review.role}</p>
 
-            <p className='text-gray-600 italic'>"{review.review}"</p>
+            <p className='text-gray-600 italic'>{review.review}</p>
           </MotionDiv>
         ))}
       </div>
